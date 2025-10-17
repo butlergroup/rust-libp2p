@@ -49,7 +49,9 @@ jobs:
           save-if: false
 
       - name: Install grcov
-        run: cargo install grcov --locked
+        run: |
+          unset RUSTFLAGS || true
+          cargo install grcov --locked
 
       - name: Run all tests with coverage
         run: cargo test --package "${{ matrix.crate }}" --all-features
