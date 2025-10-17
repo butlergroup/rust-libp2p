@@ -1,4 +1,4 @@
-name: Continuous integration
+name: Cross-Platform CI/Unit Tests
 
 on:
   pull_request:
