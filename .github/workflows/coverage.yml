@@ -43,7 +43,6 @@ jobs:
       env:
         LLVM_PROFILE_FILE: "/mnt/runner/cargo-target/coverage/%p-%m.profraw"
       run: |
-        echo $LLVM_PROFILE_FILE
         cargo clean
         cargo build --tests
         cargo test

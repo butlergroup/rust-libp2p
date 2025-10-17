@@ -17,7 +17,7 @@ env:
 
 jobs:
   test:
-    name: Test ${{ matrix.crate }}
+    name: Test ${{ matrix.crate }} on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     timeout-minutes: 10
     needs: gather_published_crates
@@ -42,11 +42,34 @@ jobs:
           shared-key: stable-cache
           save-if: false
 
+      - name: Install grcov
+        run: |
+          curl -LsSf https://github.com/mozilla/grcov/releases/download/v0.8.19/grcov-x86_64-unknown-linux-gnu.tar.bz2 | tar xj
+          sudo mv grcov /usr/local/bin/
+
       - name: Run all tests
         run: cargo test --package "${{ matrix.crate }}" --all-features
 
       - name: Check if we compile without any features activated
         run: cargo build --package "${{ matrix.crate }}" --no-default-features
+
+      - name: Generate coverage report
+        run: |
+          grcov /mnt/runner/cargo-target/coverage \
+            --binary-path /mnt/runner/cargo-target/debug/ \
+            --source-dir . \
+            --output-type lcov \
+            --branch \
+            --ignore-not-existing \
+            --ignore "/*/.cargo/**" \
+            --output-path coverage/lcov.info
+
+      - name: Coveralls GitHub Action
+        uses: coverallsapp/github-action@v2.3.6
+        env:
+          COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
+        with:
+          path-to-lcov: coverage/lcov.info
 
       - name: Enforce no dependency on meta crate
         if: env.CRATE != 'libp2p-server' && env.CRATE != 'libp2p-perf'
