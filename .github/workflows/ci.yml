@@ -60,6 +60,7 @@ jobs:
           tool: tomlq
 
       - name: Extract version from manifest
+        shell: bash
         run: |
           CRATE_VERSION=$(cargo metadata --format-version=1 --no-deps | jq -e -r '.packages[] | select(.name == "'"${{ matrix.crate }}"'") | .version')
 

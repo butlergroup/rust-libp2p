@@ -19,28 +19,14 @@ jobs:
       LLVM_PROFILE_FILE: "coverage/%p-%m.profraw"
 
     steps:
-    - name: Free up disk space
+    - name: Move cargo target directory to /mnt
       run: |
-        echo "Initial disk usage:"
+        echo "Before moving target:"
         df -h
-        sudo rm -rf /usr/share/dotnet
-        sudo rm -rf /opt/ghc
-        sudo rm -rf /usr/local/lib/android
-        sudo rm -rf /usr/local/share/powershell
-        sudo rm -rf /usr/local/share/chromium
-        sudo rm -rf /usr/local/share/boost
-        sudo apt-get clean
-        echo "Disk usage after cleanup:"
+        mkdir -p /mnt/cargo-target
+        echo "target-dir = \"/mnt/cargo-target\"" >> ~/.cargo/config
+        echo "After configuring cargo target directory:"
         df -h
-
-    - name: Cache Cargo registry and target
-      uses: actions/cache@v4
-      with:
-        path: |
-          ~/.cargo/registry
-          ~/.cargo/git
-          target
-        key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
 
     - uses: actions/checkout@v4
 
