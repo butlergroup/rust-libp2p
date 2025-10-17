@@ -47,9 +47,9 @@ jobs:
         LLVM_PROFILE_FILE: "/mnt/coverage/%p-%m.profraw"
       run: |
         sudo mkdir -p /mnt/coverage
-        cargo clean
-        cargo build --tests
-        cargo test
+        sudo cargo clean
+        sudo cargo build --tests
+        sudo cargo test
         
     - name: Generate coverage report
       run: |
