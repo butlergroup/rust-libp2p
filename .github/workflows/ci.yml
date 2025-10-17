@@ -64,6 +64,8 @@ jobs:
       - name: Generate coverage report
         shell: bash
         run: |
+          echo "RUSTFLAGS=-Cinstrument-coverage -Clink-dead-code -Coverflow-checks=off" >> $GITHUB_ENV
+          echo "LLVM_PROFILE_FILE=coverage/%p-%m.profraw" >> $GITHUB_ENV
           mkdir -p coverage
           grcov . \
             --binary-path ./target/debug/ \
