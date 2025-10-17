@@ -19,15 +19,14 @@ jobs:
       LLVM_PROFILE_FILE: "coverage/%p-%m.profraw"
 
     steps:
+    - uses: actions/checkout@v4
     - name: Move working folders to /mnt
       run: |
         sudo mkdir -p /mnt/runner
         sudo mkdir -p /mnt/runner/cargo-target
-        sudo mkdir -p /mnt/runner/coverage
+        sudo mkdir -p /mnt/runner/cargo-target/coverage
         sudo chown -R $USER:$USER /mnt/runner
         echo 'target-dir = "/mnt/runner/cargo-target"' >> ~/.cargo/config
-
-    - uses: actions/checkout@v4
 
     - name: Set up Rust with coverage tools
       uses: actions-rs/toolchain@v1
@@ -43,7 +42,7 @@ jobs:
 
     - name: Run tests with coverage
       env:
-        LLVM_PROFILE_FILE: "/mnt/runner/coverage/%p-%m.profraw"
+        LLVM_PROFILE_FILE: "/mnt/runner/cargo-target/coverage/%p-%m.profraw"
       run: |
         cargo clean
         cargo build --tests
@@ -52,14 +51,13 @@ jobs:
     - name: Generate coverage report
       run: |
         mkdir -p coverage
-        grcov . \
-          --binary-path ./target/debug/ \
+        grcov /mnt/runner/cargo-target/coverage \
+          --binary-path /mnt/runner/cargo-target/debug/ \
           --source-dir . \
           --output-type lcov \
           --branch \
           --ignore-not-existing \
           --ignore "/*/.cargo/**" \
-          --ignore "target/**" \
           --output-path coverage/lcov.info
 
     - name: Coveralls GitHub Action
