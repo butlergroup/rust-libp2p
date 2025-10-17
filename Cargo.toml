@@ -70,7 +70,7 @@ members = [
 resolver = "2"
 
 [workspace.package]
-rust-version = "1.83.0"
+rust-version = "1.90.0"
 edition = "2021"
 
 [workspace.dependencies]
