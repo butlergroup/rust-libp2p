@@ -4,7 +4,7 @@
 [![Rust CI](https://github.com/butlergroup/rust-libp2p/actions/workflows/ci.yml/badge.svg)](https://github.com/butlergroup/rust-libp2p/actions/workflows/ci.yml)
 [![dependency status](https://deps.rs/repo/github/butlergroup/rust-libp2p/status.svg?style=flat-square)](https://deps.rs/repo/github/butlergroup/rust-libp2p)
 [![cargo audit](https://github.com/butlergroup/rust-libp2p/actions/workflows/cargo-audit.yml/badge.svg)](https://github.com/butlergroup/rust-libp2p/actions/workflows/cargo-audit.yml)
-[![OpenSSF Best Practices](https://www.bestpractices.dev/en/projects/11315/badge)](https://www.bestpractices.dev/en/projects/11315)
+[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/11315/badge)](https://www.bestpractices.dev/projects/11315)
 [![Scorecard supply-chain security](https://github.com/butlergroup/rust-libp2p/actions/workflows/scorecard.yml/badge.svg)](https://github.com/butlergroup/rust-libp2p/actions/workflows/scorecard.yml)
 [![Microsoft Defender For Devops](https://github.com/butlergroup/rust-libp2p/actions/workflows/defender-for-devops.yml/badge.svg)](https://github.com/butlergroup/rust-libp2p/actions/workflows/defender-for-devops.yml)
 [![Coverage Status](https://coveralls.io/repos/github/butlergroup/rust-libp2p/badge.svg?branch=main)](https://coveralls.io/github/butlergroup/rust-libp2p?branch=main)
