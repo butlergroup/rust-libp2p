@@ -16,7 +16,7 @@ libp2p-identity = { workspace = true }
 rcgen = { workspace = true }
 ring = { workspace = true }
 thiserror = { workspace = true }
-webpki = { version = "0.103", package = "rustls-webpki", features = ["std"] }
+webpki = { version = "0.103.7", package = "rustls-webpki", features = ["std"] }
 x509-parser = "0.18.0"
 yasna = "0.5.2"
 
@@ -28,7 +28,7 @@ features = ["ring", "std"] # Must enable this to allow for custom verification c
 
 
 [dev-dependencies]
-hex-literal = "0.4.1"
+hex-literal = "1.0.0"
 libp2p-core = { workspace = true }
 libp2p-identity = { workspace = true, features = ["ed25519", "rsa", "secp256k1", "ecdsa", "rand"] }
 libp2p-swarm = { workspace = true, features = ["tokio"] }

@@ -234,9 +234,7 @@ where
     }
 
     fn connection_keep_alive(&self) -> bool {
-        self.handlers
-            .values()
-            .any(|h| h.connection_keep_alive())
+        self.handlers.values().any(|h| h.connection_keep_alive())
     }
 
     fn poll(
