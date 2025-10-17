@@ -12,8 +12,8 @@ categories = ["network-programming", "asynchronous"]
 
 [dependencies]
 futures = { workspace = true }
-pin-project = "1.1.5"
-static_assertions = "1"
+pin-project = "1.1.10"
+static_assertions = "1.1.0"
 
 [dev-dependencies]
 tokio = { workspace = true, features = ["rt", "macros"] }

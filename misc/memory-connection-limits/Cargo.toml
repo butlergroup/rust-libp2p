@@ -10,11 +10,11 @@ keywords = ["peer-to-peer", "libp2p", "networking"]
 categories = ["network-programming", "asynchronous"]
 
 [dependencies]
-memory-stats = { version = "1", features = ["always_use_statm"] }
+memory-stats = { version = "1.2.0", features = ["always_use_statm"] }
 libp2p-core = { workspace = true }
 libp2p-swarm = { workspace = true }
 libp2p-identity = { workspace = true, features = ["peerid"] }
-sysinfo = "0.33"
+sysinfo = "0.37.2"
 tracing = { workspace = true }
 
 [dev-dependencies]

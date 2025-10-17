@@ -9,8 +9,8 @@ license = "Unlicense/MIT"
 release = false
 
 [dependencies]
-quickcheck = "1"
-num-traits = "0.2"
+quickcheck = "1.0.3"
+num-traits = "0.2.19"
 
 [lints]
 workspace = true

@@ -12,13 +12,13 @@ categories = ["asynchronous"]
 
 [dependencies]
 asynchronous-codec = { workspace = true }
-bytes = { version = "1" }
+bytes = { version = "1.10.1" }
 thiserror = { workspace = true }
 unsigned-varint = { workspace = true, features = ["std"] }
-quick-protobuf = "0.8"
+quick-protobuf = "0.8.1"
 
 [dev-dependencies]
-criterion = "0.5.1"
+criterion = "0.7.0"
 futures = { workspace = true }
 quickcheck = { workspace = true }
 

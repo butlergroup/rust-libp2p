@@ -11,30 +11,30 @@ keywords = ["peer-to-peer", "libp2p", "networking"]
 categories = ["network-programming", "asynchronous"]
 
 [dependencies]
-bytes = "1"
-either = "1.11"
-fnv = "1.0"
+bytes = "1.10.1"
+either = "1.15.0"
+fnv = "1.0.7"
 asynchronous-codec = { workspace = true }
 futures = { workspace = true }
 libp2p-core = { workspace = true }
 libp2p-swarm = { workspace = true }
 futures-bounded = { workspace = true }
-quick-protobuf = "0.8"
+quick-protobuf = "0.8.1"
 quick-protobuf-codec = { workspace = true }
 libp2p-identity = { workspace = true, features = ["rand"] }
-rand = "0.8"
-sha2 = "0.10.8"
-smallvec = "1.13.2"
+rand = "0.9.2"
+sha2 = "0.10.9"
+smallvec = "1.15.1"
 uint = "0.10"
 futures-timer = "3.0.3"
 web-time = { workspace = true }
-serde = { version = "1.0", optional = true, features = ["derive"] }
+serde = { version = "1.0.228", optional = true, features = ["derive"] }
 thiserror = { workspace = true }
 tracing = { workspace = true }
 
 [dev-dependencies]
 tokio = { workspace = true, features = ["macros", "rt-multi-thread", "time"] }
-futures-timer = "3.0"
+futures-timer = "3.0.3"
 libp2p-identify = { path = "../identify" }
 libp2p-noise = { workspace = true }
 libp2p-swarm = { path = "../../swarm", features = ["macros", "tokio"] }
