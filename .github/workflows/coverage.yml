@@ -19,6 +19,20 @@ jobs:
       LLVM_PROFILE_FILE: "coverage/%p-%m.profraw"
 
     steps:
+    - name: Free up disk space
+      run: |
+        echo "Initial disk usage:"
+        df -h
+        sudo rm -rf /usr/share/dotnet
+        sudo rm -rf /opt/ghc
+        sudo rm -rf /usr/local/lib/android
+        sudo rm -rf /usr/local/share/powershell
+        sudo rm -rf /usr/local/share/chromium
+        sudo rm -rf /usr/local/share/boost
+        sudo apt-get clean
+        echo "Disk usage after cleanup:"
+        df -h
+
     - uses: actions/checkout@v4
 
     - name: Set up Rust with coverage tools

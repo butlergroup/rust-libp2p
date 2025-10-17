@@ -51,7 +51,7 @@ jobs:
       - name: Enforce no dependency on meta crate
         if: env.CRATE != 'libp2p-server' && env.CRATE != 'libp2p-perf'
         run: |
-          cargo metadata --format-version=1 --no-deps | jq -e -r '.packages[] | select(.name == "'"$CRATE"'") | .dependencies | all(.name != "libp2p")'
+          cargo metadata --format-version=1 --no-deps | jq -e -r ".packages[] | select(.name == \"$env:CRATE\") | .dependencies | all(.name != \"libp2p\")"
 
       - uses: taiki-e/cache-cargo-install-action@v2
         with:
@@ -220,7 +220,7 @@ jobs:
       fail-fast: false
       matrix:
         rust-version: [
-          1.83.0, # current stable
+          1.90.0, # current stable
           beta,
         ]
     steps:
