@@ -55,8 +55,9 @@ jobs:
 
       - name: Generate coverage report
         run: |
-          grcov /mnt/runner/cargo-target/coverage \
-            --binary-path /mnt/runner/cargo-target/debug/ \
+          mkdir -p coverage
+          grcov . \
+            --binary-path ./target/debug/ \
             --source-dir . \
             --output-type lcov \
             --branch \
