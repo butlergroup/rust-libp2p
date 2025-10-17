@@ -43,10 +43,10 @@ jobs:
           save-if: false
 
       - name: Run all tests
-        run: cargo test --package "$CRATE" --all-features
+        run: cargo test --package "${{ matrix.crate }}" --all-features
 
       - name: Check if we compile without any features activated
-        run: cargo build --package "$CRATE" --no-default-features
+        run: cargo build --package "${{ matrix.crate }}" --no-default-features
 
       - name: Enforce no dependency on meta crate
         if: env.CRATE != 'libp2p-server' && env.CRATE != 'libp2p-perf'
@@ -60,7 +60,7 @@ jobs:
 
       - name: Extract version from manifest
         run: |
-          CRATE_VERSION=$(cargo metadata --format-version=1 --no-deps | jq -e -r '.packages[] | select(.name == "'"$CRATE"'") | .version')
+          CRATE_VERSION=$(cargo metadata --format-version=1 --no-deps | jq -e -r '.packages[] | select(.name == "'"${{ matrix.crate }}"'") | .version')
 
           echo "CRATE_VERSION=$CRATE_VERSION" >> $GITHUB_ENV
 
@@ -76,7 +76,7 @@ jobs:
 
       - name: Enforce version in CHANGELOG.md matches the version in manifest
         run: |
-          MANIFEST_PATH=$(cargo metadata --format-version=1 --no-deps | jq -e -r '.packages[] | select(.name == "'"$CRATE"'") | .manifest_path')
+          MANIFEST_PATH=$(cargo metadata --format-version=1 --no-deps | jq -e -r '.packages[] | select(.name == "'"${{ matrix.crate }}"'") | .manifest_path')
           DIR_TO_CRATE=$(dirname "$MANIFEST_PATH")
           VERSION_IN_CHANGELOG=$(awk -F' ' '/^## [0-9]+\.[0-9]+\.[0-9]+/{print $2; exit}' "$DIR_TO_CRATE/CHANGELOG.md")
 

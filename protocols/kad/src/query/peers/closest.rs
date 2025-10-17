@@ -512,8 +512,10 @@ mod tests {
     fn random_peers<R: Rng>(n: usize, g: &mut R) -> Vec<PeerId> {
         (0..n)
             .map(|_| {
-                PeerId::from_multihash(Multihash::wrap(SHA_256_MH, &g.random::<[u8; 32]>()).unwrap())
-                    .unwrap()
+                PeerId::from_multihash(
+                    Multihash::wrap(SHA_256_MH, &g.random::<[u8; 32]>()).unwrap(),
+                )
+                .unwrap()
             })
             .collect()
     }
