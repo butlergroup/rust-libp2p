@@ -48,10 +48,9 @@ jobs:
           sudo mv grcov /usr/local/bin/
 
       - name: Set coverage environment
-        run: echo "RUSTFLAGS='-Cinstrument-coverage -Clink-dead-code -Coverflow-checks=off'" >> $GITHUB_ENV
-
-      - name: Set LLVM_PROFILE_FILE
-        run: echo "LLVM_PROFILE_FILE='coverage/%p-%m.profraw'" >> $GITHUB_ENV
+        run: |
+          echo "RUSTFLAGS=-Cinstrument-coverage -Clink-dead-code -Coverflow-checks=off" >> $GITHUB_ENV
+          echo "LLVM_PROFILE_FILE=coverage/%p-%m.profraw" >> $GITHUB_ENV
 
       - name: Run all tests with coverage
         run: cargo test --package "${{ matrix.crate }}" --all-features
