@@ -19,14 +19,13 @@ jobs:
       LLVM_PROFILE_FILE: "coverage/%p-%m.profraw"
 
     steps:
-    - name: Move cargo target directory to /mnt
+    - name: Move working folders to /mnt
       run: |
-        echo "Before moving target:"
-        df -h
-        sudo mkdir -p /mnt/cargo-target
-        echo "target-dir = \"/mnt/cargo-target\"" >> ~/.cargo/config
-        echo "After configuring cargo target directory:"
-        df -h
+        sudo mkdir -p /mnt/runner
+        sudo mkdir -p /mnt/runner/cargo-target
+        sudo mkdir -p /mnt/runner/coverage
+        sudo chown -R $USER:$USER /mnt/runner
+        echo 'target-dir = "/mnt/runner/cargo-target"' >> ~/.cargo/config
 
     - uses: actions/checkout@v4
 
@@ -44,12 +43,11 @@ jobs:
 
     - name: Run tests with coverage
       env:
-        LLVM_PROFILE_FILE: "/mnt/coverage/%p-%m.profraw"
+        LLVM_PROFILE_FILE: "/mnt/runner/coverage/%p-%m.profraw"
       run: |
-        sudo mkdir -p /mnt/coverage
-        sudo cargo clean
-        sudo cargo build --tests
-        sudo cargo test
+        cargo clean
+        cargo build --tests
+        cargo test
         
     - name: Generate coverage report
       run: |
