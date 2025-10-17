@@ -1,7 +1,16 @@
 # Central repository for work on libp2p
 
-<a href="http://libp2p.io/"><img src="https://img.shields.io/badge/project-libp2p-yellow.svg?style=flat-square" /></a>
+[![CodeQL](https://github.com/butlergroup/rust-libp2p/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/butlergroup/rust-libp2p/actions/workflows/github-code-scanning/codeql)
+[![Rust CI](https://github.com/butlergroup/rust-libp2p/actions/workflows/ci.yml/badge.svg)](https://github.com/butlergroup/rust-libp2p/actions/workflows/ci.yml)
 [![dependency status](https://deps.rs/repo/github/butlergroup/rust-libp2p/status.svg?style=flat-square)](https://deps.rs/repo/github/butlergroup/rust-libp2p)
+[![cargo audit](https://github.com/butlergroup/rust-libp2p/actions/workflows/cargo-audit.yml/badge.svg)](https://github.com/butlergroup/rust-libp2p/actions/workflows/cargo-audit.yml)
+[![OpenSSF Best Practices](https://www.bestpractices.dev/en/projects/11315/badge)](https://www.bestpractices.dev/en/projects/11315)
+[![Scorecard supply-chain security](https://github.com/butlergroup/rust-libp2p/actions/workflows/scorecard.yml/badge.svg)](https://github.com/butlergroup/rust-libp2p/actions/workflows/scorecard.yml)
+[![Microsoft Defender For Devops](https://github.com/butlergroup/rust-libp2p/actions/workflows/defender-for-devops.yml/badge.svg)](https://github.com/butlergroup/rust-libp2p/actions/workflows/defender-for-devops.yml)
+[![Coverage Status](https://coveralls.io/repos/github/butlergroup/rust-libp2p/badge.svg?branch=main)](https://coveralls.io/github/butlergroup/rust-libp2p?branch=main)
+[![Feature Requests](https://img.shields.io/github/issues/butlergroup/rust-libp2p/feature-request.svg)](https://github.com/butlergroup/rust-libp2p/issues?q=is%3Aopen+is%3Aissue+label%3Aenhancement)
+[![Bugs](https://img.shields.io/github/issues/butlergroup/rust-libp2p/bug.svg)](https://github.com/butlergroup/rust-libp2p/issues?utf8=✓&q=is%3Aissue+is%3Aopen+label%3Abug)
+<a href="http://libp2p.io/"><img src="https://img.shields.io/badge/project-libp2p-yellow.svg?style=flat-square" /></a>
 [![Crates.io](https://img.shields.io/crates/v/libp2p.svg)](https://crates.io/crates/libp2p)
 [![docs.rs](https://img.shields.io/badge/api-rustdoc-blue.svg)](https://docs.rs/libp2p)
 [![docs.rs master](https://img.shields.io/badge/docs-master-blueviolet)](https://libp2p.github.io/rust-libp2p/libp2p/)
