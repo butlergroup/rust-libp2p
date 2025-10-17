@@ -23,7 +23,7 @@ jobs:
       run: |
         echo "Before moving target:"
         df -h
-        mkdir -p /mnt/cargo-target
+        sudo mkdir -p /mnt/cargo-target
         echo "target-dir = \"/mnt/cargo-target\"" >> ~/.cargo/config
         echo "After configuring cargo target directory:"
         df -h
