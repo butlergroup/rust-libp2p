@@ -1,4 +1,8 @@
 name: Build and host documentation
+
+permissions:
+  contents: read
+
 on:
   push:
     branches:

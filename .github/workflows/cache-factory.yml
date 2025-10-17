@@ -5,6 +5,9 @@
 
 name: Cache factory
 
+permissions:
+  contents: read
+
 on:
   push:
     branches:

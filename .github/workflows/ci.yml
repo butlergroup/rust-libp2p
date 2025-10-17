@@ -1,5 +1,8 @@
 name: Cross-Platform CI/Unit Tests
 
+permissions:
+  contents: read
+
 on:
   pull_request:
   push:
@@ -49,6 +52,7 @@ jobs:
           save-if: false
 
       - name: Install grcov
+        shell: bash
         run: |
           unset RUSTFLAGS || true
           cargo install grcov --locked

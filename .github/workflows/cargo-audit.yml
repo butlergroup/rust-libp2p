@@ -1,4 +1,8 @@
 name: cargo audit
+
+permissions:
+  contents: read
+
 on:
   schedule:
     - cron: '0 0 * * *'
