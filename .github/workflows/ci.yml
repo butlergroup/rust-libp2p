@@ -13,7 +13,8 @@ concurrency:
 
 env:
   SEGMENT_DOWNLOAD_TIMEOUT_MINS: 2 # Fail cache download after 2 minutes.
-  RUSTFLAGS: '-Dwarnings' # Never tolerate warnings.
+  RUSTFLAGS: '-Cinstrument-coverage -Clink-dead-code -Coverflow-checks=off -Dwarnings' # Never tolerate warnings.
+  LLVM_PROFILE_FILE: coverage/%p-%m.profraw
 
 jobs:
   test:
@@ -50,11 +51,6 @@ jobs:
       - name: Install grcov
         run: cargo install grcov --locked
 
-      - name: Set coverage environment
-        run: |
-          echo "RUSTFLAGS=-Cinstrument-coverage -Clink-dead-code -Coverflow-checks=off" >> $GITHUB_ENV
-          echo "LLVM_PROFILE_FILE=coverage/%p-%m.profraw" >> $GITHUB_ENV
-
       - name: Run all tests with coverage
         run: cargo test --package "${{ matrix.crate }}" --all-features
 
@@ -64,8 +60,6 @@ jobs:
       - name: Generate coverage report
         shell: bash
         run: |
-          echo "RUSTFLAGS=-Cinstrument-coverage -Clink-dead-code -Coverflow-checks=off" >> $GITHUB_ENV
-          echo "LLVM_PROFILE_FILE=coverage/%p-%m.profraw" >> $GITHUB_ENV
           mkdir -p coverage
           grcov . \
             --binary-path ./target/debug/ \
