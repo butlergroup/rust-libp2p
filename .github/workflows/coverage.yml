@@ -16,7 +16,6 @@ jobs:
 
     env:
       RUSTFLAGS: "-Cinstrument-coverage -Clink-dead-code -Coverflow-checks=off"
-      LLVM_PROFILE_FILE: "coverage/%p-%m.profraw"
 
     steps:
     - uses: actions/checkout@v4
@@ -44,13 +43,13 @@ jobs:
       env:
         LLVM_PROFILE_FILE: "/mnt/runner/cargo-target/coverage/%p-%m.profraw"
       run: |
+        echo '$LLVM_PROFILE_FILE'
         cargo clean
         cargo build --tests
         cargo test
         
     - name: Generate coverage report
       run: |
-        mkdir -p coverage
         grcov /mnt/runner/cargo-target/coverage \
           --binary-path /mnt/runner/cargo-target/debug/ \
           --source-dir . \
