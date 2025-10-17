@@ -33,7 +33,7 @@ use libp2p_noise as noise;
 use libp2p_swarm::{self as swarm, Swarm, SwarmEvent};
 use libp2p_yamux as yamux;
 use quickcheck::*;
-use rand::{random, rngs::StdRng, rng, Rng, SeedableRng};
+use rand::{random, rng, rngs::StdRng, Rng, SeedableRng};
 use tokio::runtime::Runtime;
 
 use super::*;
