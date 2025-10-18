@@ -1,6 +1,7 @@
 name: Publish docker images
 
-permissions: read-all
+permissions:
+  contents: read
 
 on:
   push:
@@ -12,6 +13,8 @@ on:
 jobs:
   server:
     runs-on: ubuntu-latest
+    permissions:
+      packages: write
     steps:
       - uses: actions/checkout@v5
 
