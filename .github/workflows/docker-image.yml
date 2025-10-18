@@ -1,7 +1,6 @@
 name: Publish docker images
 
-permissions:
-  contents: read
+permissions: read-all
 
 on:
   push:

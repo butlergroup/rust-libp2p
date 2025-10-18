@@ -57,6 +57,10 @@ jobs:
           unset RUSTFLAGS || true
           cargo install grcov --locked
 
+      - name: Install & set Rust GNU toolchain on Windows
+        if: runner.os == 'Windows'
+        run: rustup set default-host x86_64-pc-windows-gnu && rustup default stable-x86_64-pc-windows-gnu
+
       - name: Run all tests with coverage
         run: cargo test --package "${{ matrix.crate }}" --all-features
 
