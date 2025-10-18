@@ -124,7 +124,7 @@ futures = "0.3.31"
 futures-bounded = { version = "0.2.4" }
 futures-rustls = { version = "0.26.0", default-features = false }
 getrandom = "0.2.16"
-if-watch = "3.2.1"
+if-watch = { git = "https://github.com/butlergroup/if-watch.git" } # forked to resolve RUSTSEC-2024-0436 with the paste crate
 hickory-proto = { version = "0.25.2", default-features = false }
 hickory-resolver = { version = "0.25.2", default-features = false }
 multiaddr = "0.18.2"
@@ -145,7 +145,6 @@ web-time = "1.1.0"
 hashlink = "0.10.0"
 
 [patch.crates-io]
-
 # Patch away `libp2p-identity` in our dependency tree with the workspace version.
 # `libp2p-identity` is a leaf dependency and used within `rust-multiaddr` which is **not** part of the workspace.
 # As a result, we cannot just reference the workspace version in our crates because the types would mismatch with what
