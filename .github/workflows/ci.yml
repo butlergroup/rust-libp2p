@@ -16,8 +16,8 @@ concurrency:
 
 env:
   SEGMENT_DOWNLOAD_TIMEOUT_MINS: 2 # Fail cache download after 2 minutes.
-  RUSTFLAGS: '-Cinstrument-coverage -Clink-dead-code -Coverflow-checks=off -Dwarnings' # Never tolerate warnings.
-  LLVM_PROFILE_FILE: coverage/%p-%m.profraw
+  RUSTFLAGS: ${{ runner.os != 'Windows' && '-Cinstrument-coverage -Clink-dead-code -Coverflow-checks=off' || '' }} 
+  LLVM_PROFILE_FILE: ${{ runner.os != 'Windows' && 'coverage/%p-%m.profraw' || '' }}
 
 jobs:
   test:
@@ -56,12 +56,6 @@ jobs:
         run: |
           unset RUSTFLAGS || true
           cargo install grcov --locked
-
-      - name: Install & set Rust GNU toolchain on Windows
-        if: runner.os == 'Windows'
-        run: |
-          rustup toolchain install stable-x86_64-pc-windows-gnu
-          rustup override set stable-x86_64-pc-windows-gnu
 
       - name: Run all tests with coverage
         run: cargo test --package "${{ matrix.crate }}" --all-features

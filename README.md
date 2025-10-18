@@ -7,7 +7,7 @@
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/11315/badge)](https://www.bestpractices.dev/projects/11315)
 [![Scorecard supply-chain security](https://github.com/butlergroup/rust-libp2p/actions/workflows/scorecard.yml/badge.svg)](https://github.com/butlergroup/rust-libp2p/actions/workflows/scorecard.yml)
 [![Microsoft Defender For Devops](https://github.com/butlergroup/rust-libp2p/actions/workflows/defender-for-devops.yml/badge.svg)](https://github.com/butlergroup/rust-libp2p/actions/workflows/defender-for-devops.yml)
-[![Coverage Status](https://coveralls.io/repos/github/butlergroup/rust-libp2p/badge.svg?branch=main)](https://coveralls.io/github/butlergroup/rust-libp2p?branch=main)
+[![Coverage Status](https://coveralls.io/repos/github/butlergroup/rust-libp2p/badge.svg?branch=master)](https://coveralls.io/github/butlergroup/rust-libp2p?branch=master)
 [![Feature Requests](https://img.shields.io/github/issues/butlergroup/rust-libp2p/feature-request.svg)](https://github.com/butlergroup/rust-libp2p/issues?q=is%3Aopen+is%3Aissue+label%3Aenhancement)
 [![Bugs](https://img.shields.io/github/issues/butlergroup/rust-libp2p/bug.svg)](https://github.com/butlergroup/rust-libp2p/issues?utf8=✓&q=is%3Aissue+is%3Aopen+label%3Abug)
 <a href="http://libp2p.io/"><img src="https://img.shields.io/badge/project-libp2p-yellow.svg?style=flat-square" /></a>
