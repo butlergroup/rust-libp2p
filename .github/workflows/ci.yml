@@ -1,4 +1,4 @@
-name: Cross-Platform CI/Unit Tests
+name: Cross-Platform Rust CI/Unit Tests
 
 permissions:
   contents: read

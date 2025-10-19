@@ -1151,6 +1151,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "dissimilar"
+version = "1.0.10"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "8975ffdaa0ef3661bfe02dbdcc06c9f829dfafe6a3c474de366a8d5e44276921"
+
+[[package]]
 name = "distributed-key-value-store-example"
 version = "0.1.0"
 dependencies = [
@@ -2127,8 +2133,7 @@ dependencies = [
 [[package]]
 name = "if-watch"
 version = "3.2.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "cdf9d64cfcf380606e64f9a0bcf493616b65331199f984151a6fa11a7b3cde38"
+source = "git+https://github.com/butlergroup/if-watch.git#013b68779019848214d0351072a4fc871641c113"
 dependencies = [
  "async-io",
  "core-foundation",
@@ -2137,9 +2142,9 @@ dependencies = [
  "if-addrs",
  "ipnet",
  "log",
- "netlink-packet-core",
+ "netlink-packet-core 0.7.0 (git+https://github.com/butlergroup/netlink-packet-core.git)",
  "netlink-packet-route",
- "netlink-proto",
+ "netlink-proto 0.11.0",
  "netlink-sys",
  "rtnetlink",
  "system-configuration",
@@ -3604,25 +3609,85 @@ dependencies = [
 
 [[package]]
 name = "netlink-packet-core"
+version = "0.5.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "7e5cf0b54effda4b91615c40ff0fd12d0d4c9a6e0f5116874f03941792ff535a"
+dependencies = [
+ "anyhow",
+ "byteorder",
+ "libc",
+ "netlink-packet-utils 0.5.2 (registry+https://github.com/rust-lang/crates.io-index)",
+]
+
+[[package]]
+name = "netlink-packet-core"
 version = "0.7.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "72724faf704479d67b388da142b186f916188505e7e0b26719019c525882eda4"
 dependencies = [
  "anyhow",
  "byteorder",
+ "netlink-packet-utils 0.5.2 (registry+https://github.com/rust-lang/crates.io-index)",
+]
+
+[[package]]
+name = "netlink-packet-core"
+version = "0.7.0"
+source = "git+https://github.com/butlergroup/netlink-packet-core.git#fa3b719b21c80657fbfd14004064bdba00aae539"
+dependencies = [
+ "anyhow",
+ "byteorder",
+ "netlink-packet-utils 0.5.2 (git+https://github.com/butlergroup/netlink-packet-utils.git)",
 ]
 
 [[package]]
 name = "netlink-packet-route"
-version = "0.17.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "053998cea5a306971f88580d0829e90f270f940befd7cf928da179d4187a5a66"
+version = "0.17.0"
+source = "git+https://github.com/butlergroup/netlink-packet-route.git#d789a43ab609ae61741408edc7963bc844bfbe86"
 dependencies = [
  "anyhow",
  "bitflags 1.3.2",
  "byteorder",
  "libc",
- "netlink-packet-core",
+ "netlink-packet-core 0.7.0 (git+https://github.com/butlergroup/netlink-packet-core.git)",
+ "netlink-packet-utils 0.5.2 (git+https://github.com/butlergroup/netlink-packet-utils.git)",
+]
+
+[[package]]
+name = "netlink-packet-utils"
+version = "0.5.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "0ede8a08c71ad5a95cdd0e4e52facd37190977039a4704eb82a283f713747d34"
+dependencies = [
+ "anyhow",
+ "byteorder",
+ "paste 1.0.15",
+ "thiserror 1.0.69",
+]
+
+[[package]]
+name = "netlink-packet-utils"
+version = "0.5.2"
+source = "git+https://github.com/butlergroup/netlink-packet-utils.git#1f5b25b7a9a7ed6571e2be4fd9276b2ad39046e7"
+dependencies = [
+ "anyhow",
+ "byteorder",
+ "paste 1.1.0",
+ "thiserror 1.0.69",
+]
+
+[[package]]
+name = "netlink-proto"
+version = "0.11.0"
+source = "git+https://github.com/butlergroup/netlink-proto.git#a6dd5251dc721399ee376c5b9a2f0733db8ffc70"
+dependencies = [
+ "bytes",
+ "futures",
+ "log",
+ "netlink-packet-core 0.5.0",
+ "netlink-sys",
+ "thiserror 1.0.69",
+ "tokio",
 ]
 
 [[package]]
@@ -3634,7 +3699,7 @@ dependencies = [
  "bytes",
  "futures",
  "log",
- "netlink-packet-core",
+ "netlink-packet-core 0.7.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "netlink-sys",
  "thiserror 2.0.17",
 ]
@@ -4123,6 +4188,27 @@ dependencies = [
  "smallvec",
  "windows-link 0.2.1",
 ]
+
+[[package]]
+name = "paste"
+version = "1.0.15"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "57c0d7b74b563b49d38dae00a0c37d4d6de9b432382b2892f0574ddcae73fd0a"
+
+[[package]]
+name = "paste"
+version = "1.1.0"
+source = "git+https://github.com/butlergroup/paste.git#68f9720a22050ccb7ef877199c9f6202125a0000"
+dependencies = [
+ "paste-test-suite",
+ "rustversion",
+ "trybuild",
+]
+
+[[package]]
+name = "paste-test-suite"
+version = "0.0.0"
+source = "git+https://github.com/butlergroup/paste.git#68f9720a22050ccb7ef877199c9f6202125a0000"
 
 [[package]]
 name = "pastey"
@@ -4834,16 +4920,15 @@ dependencies = [
 
 [[package]]
 name = "rtnetlink"
-version = "0.13.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7a552eb82d19f38c3beed3f786bd23aa434ceb9ac43ab44419ca6d67a7e186c0"
+version = "0.13.0"
+source = "git+https://github.com/butlergroup/rtnetlink.git#aec3714f0df5384e7e234c125446fdb0d7d72e96"
 dependencies = [
  "futures",
  "log",
- "netlink-packet-core",
+ "netlink-packet-core 0.7.0 (git+https://github.com/butlergroup/netlink-packet-core.git)",
  "netlink-packet-route",
- "netlink-packet-utils",
- "netlink-proto",
+ "netlink-packet-utils 0.5.2 (git+https://github.com/butlergroup/netlink-packet-utils.git)",
+ "netlink-proto 0.11.5",
  "netlink-sys",
  "nix",
  "thiserror 1.0.69",
@@ -5544,7 +5629,7 @@ dependencies = [
  "futures-util",
  "http",
  "indexmap 2.12.0",
- "pastey",
+ "paste 1.0.15",
  "reqwest",
  "serde",
  "serde_json",
@@ -6044,6 +6129,7 @@ version = "1.0.112"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "4d66678374d835fe847e0dc8348fde2ceb5be4a7ec204437d8367f0d8df266a5"
 dependencies = [
+ "dissimilar",
  "glob",
  "serde",
  "serde_derive",
